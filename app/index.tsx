@@ -6,7 +6,6 @@ import { Portal, PortalHost } from 'react-native-teleport';
 export default function App() {
   const router = useRouter();
   const [shouldBeTeleported, setTeleported] = useState(false);
-  console.log('shouldBeTeleported', shouldBeTeleported);
 
   return (
     <View style={styles.mainContainer}>
@@ -24,7 +23,10 @@ export default function App() {
           <PortalHost name="myPortal" style={StyleSheet.absoluteFillObject} />
         </View>
       </View>
-      <Button title="Teleport" onPress={() => { setTeleported(state => !state) }} />
+      <View>
+        <Button title="Teleport" onPress={() => { setTeleported(state => !state) }} />
+        <Text>shouldBeTeleported: {shouldBeTeleported.toString()}</Text>
+      </View>
       <Button title="Navigate to another screen" onPress={() => { router.push('/another-screen') }} />
     </View>
   );
